@@ -1,0 +1,196 @@
+/* style.css (Versi Modern) */
+
+/* --- Variabel Warna & Font Modern --- */
+:root {
+    --primary-color: #3b82f6; /* Biru sebagai aksen utama */
+    --primary-color-light: rgba(59, 130, 246, 0.1);
+
+    --sidebar-bg: #1e293b;      /* Slate Gray (Gelap) */
+    --sidebar-text: #cbd5e1;     /* Abu-abu terang untuk teks sidebar */
+    --sidebar-text-hover: #ffffff;
+    --sidebar-link-active-text: var(--primary-color);
+    --sidebar-link-active-bg: var(--primary-color-light);
+    --sidebar-separator: #334155; /* Warna pemisah yang lebih halus */
+
+    --main-bg: #f1f5f9;         /* Latar belakang utama yang sedikit kebiruan */
+    --content-bg: #ffffff;      /* Warna dasar untuk card/konten */
+    --text-color: #334155;      /* Warna teks utama (lebih soft dari hitam) */
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+
+    --danger-color: #ef4444;
+    --danger-hover-bg: rgba(239, 68, 68, 0.1);
+
+    --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+    background-color: var(--main-bg);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 15px; /* Sedikit lebih kecil untuk font Poppins */
+}
+
+/* --- Sidebar Styling Modern --- */
+.sidebar {
+    width: 260px; /* Sedikit lebih ramping */
+    min-height: 100vh;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-separator);
+    transition: width 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .sidebar-brand {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    letter-spacing: 1px;
+}
+
+.sidebar hr {
+    border-top: 1px solid var(--sidebar-separator);
+    margin: 0 1rem;
+}
+
+.sidebar .nav {
+    flex-grow: 1;
+    padding: 1rem 0.75rem;
+}
+
+/* --- Navigasi Sidebar Modern --- */
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.25rem;
+    color: var(--sidebar-text);
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    position: relative;
+}
+
+.nav-link i.bi {
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    width: 20px;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+/* Efek Hover untuk SEMUA link */
+.nav-link:hover {
+    background-color: var(--sidebar-separator);
+    color: var(--sidebar-text-hover);
+}
+
+.nav-link:hover i.bi {
+    transform: scale(1.1);
+}
+
+/* Styling untuk Link yang AKTIF */
+.nav-link.active {
+    background-color: var(--sidebar-link-active-bg);
+    color: var(--sidebar-link-active-text);
+    font-weight: 600;
+}
+
+/* Indikator Garis Kiri untuk Link Aktif */
+.nav-link.active::before {
+    content: '';
+    position: absolute;
+    left: -0.75rem; /* Posisikan di luar padding .nav */
+    top: 50%;
+    transform: translateY(-50%);
+    height: 70%;
+    width: 4px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.nav-link.active i.bi {
+    color: var(--sidebar-link-active-text);
+}
+
+
+/* Judul Kategori di Sidebar */
+.nav-link-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1.5rem 1rem 0.5rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+/* Link Logout Khusus */
+.sidebar .logout-section {
+    padding: 0 0.75rem 1rem;
+    margin-top: auto; /* Mendorong ke bawah */
+}
+.sidebar .logout-section hr {
+    margin-bottom: 1rem;
+}
+.nav-link.logout {
+    color: var(--danger-color);
+    background: transparent;
+}
+.nav-link.logout:hover {
+    background-color: var(--danger-hover-bg);
+    color: #fff;
+}
+.nav-link.logout i.bi {
+    color: inherit;
+}
+
+
+/* --- Konten Utama --- */
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto; /* Agar bisa scroll jika konten panjang */
+}
+
+/* Header di dalam Konten Utama (Modern) */
+.page-header {
+    background-color: var(--content-bg);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; /* Membuat header tetap terlihat saat scroll */
+    top: 0;
+    z-index: 10;
+}
+
+.page-header .page-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--sidebar-bg); /* Menggunakan warna gelap sidebar */
+    margin: 0;
+}
+
+.page-header .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.page-header .user-greeting {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+.page-header .user-avatar {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.page-body {
+    padding: 2rem;
+}
